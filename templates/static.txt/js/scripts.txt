@@ -1,0 +1,25 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS Service ID
+        const templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS Template ID
+
+        emailjs.send(serviceID, templateID, {
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value
+        })
+        .then(function() {
+            successMessage.style.display = 'block';
+            form.reset();
+        }, function(error) {
+            console.log('Failed to send message:', error);
+        });
+    });
+});
