@@ -46,7 +46,7 @@
     </div>
 </header>
     <main>
-        <!-- Hero Section -->
+        <!-- Home Section -->
         <section id="hero" class="parallax">
             <div class="hero-content">
                 <h1 class="glitch" data-text="Hi,I',m Sandipan Paul">Hi,I'm Sandipan Paul</h1>
@@ -227,31 +227,36 @@
                             <p>Bengaluru,Karnataka</p>
                         </div>
                     </div>
-                    <form id="contact-form" class="contact-form glass-form">
-                        <div class="form-group">
-                            <input type="text" id="name" required>
-                            <label for="name">Your Name</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" required>
-                            <label for="email">Your Email</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" required></textarea>
-                            <label for="message">Your Message</label>
-                            <span class="focus-border"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
+                    <!-- Updated form with correct ID and structure -->
+            <form id="contactForm" class="contact-form glass-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="entry.2005620554" required>
+                    <label for="name">Your Name</label>
+                    <span class="focus-border"></span>
                 </div>
-            </div>
-        </section>
-    </main>
+                <div class="form-group">
+                    <input type="email" id="email" name="entry.1045781291" required>
+                    <label for="email">Your Email</label>
+                    <span class="focus-border"></span>
+                    <div class="error" id="emailError">Please enter a valid email address</div>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="entry.839337160" required></textarea>
+                    <label for="message">Your Message</label>
+                    <span class="focus-border"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <span>Send Message</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                <div id="success-message" class="success-message" style="display: none;">
+                    Message sent successfully!
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
 
     <!-- Footer -->
   <!-- Footer -->
