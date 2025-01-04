@@ -10,7 +10,7 @@ Welcome to the repository for my portfolio website! This project showcases my sk
 
 ## [About the Project](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
  ## [Features](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
- ##[Tech Stack](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
+ ## [Tech Stack](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
 ## [Installation](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
 ## [Usage](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
 ## [Contributing](https://www.notion.so/171ee6f1683180608dfef1402f828d7b?pvs=21)
