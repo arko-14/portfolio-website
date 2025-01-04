@@ -154,9 +154,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
-
-// Contact Form with EmailJS
-const contactForm = document.getElementById('contact-form');
+// Contact Form Handler
+const contactForm = document.getElementById('contactForm');
 const successMessage = document.getElementById('success-message');
 
 contactForm.addEventListener('submit', (e) => {
@@ -168,35 +167,100 @@ contactForm.addEventListener('submit', (e) => {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    // Get form data
-    const formData = {
-        name: contactForm.querySelector('#name').value,
-        email: contactForm.querySelector('#email').value,
-        message: contactForm.querySelector('#message').value
-    };
+    // Get form data and prepare for Google Forms
+    const formData = new FormData();
+    formData.append('entry.2005620554', contactForm.querySelector('#name').value);
+    formData.append('entry.1045781291', contactForm.querySelector('#email').value);
+    formData.append('entry.839337160', contactForm.querySelector('#message').value);
 
-    // Send email using EmailJS
-    emailjs.send('service_ftulwh8', 'template_ikc0bzm', formData)
-        .then(() => {
-            // Show success message
+    // Send to Google Forms
+    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScudGAf4oKXs2D4HZvHzw0-xdSzpXTFOBIyXjdQ10EZPCQwgg/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    })
+    .then(() => {
+        // Show success message
+        if (successMessage) {
             successMessage.style.display = 'block';
-            contactForm.reset();
-
             // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 5000);
-        })
-        .catch((error) => {
-            console.error('Email error:', error);
-            alert('There was an error sending your message. Please try again.');
-        })
-        .finally(() => {
-            // Reset button state
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        });
+        } else {
+            alert('Thank you for your message!');
+        }
+        
+        // Clear the form
+        contactForm.reset();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+    })
+    .finally(() => {
+        // Reset button state
+        submitBtn.innerHTML = originalBtnText;
+        submitBtn.disabled = false;
+    });
 });
+
+// Email validation
+const emailInput = document.getElementById('email');
+const emailError = document.getElementById('emailError');
+
+emailInput.addEventListener('input', function() {
+    if (emailInput.validity.valid) {
+        emailError.style.display = 'none';
+    } else {
+        emailError.style.display = 'block';
+    }
+});
+
+    
+
+// Contact Form with EmailJS
+//const contactForm = document.getElementById('contact-form');
+//const successMessage = document.getElementById('success-message');
+
+//contactForm.addEventListener('submit', (e) => {
+    //e.preventDefault();
+
+    // Show loading state
+    //const submitBtn = contactForm.querySelector('button[type="submit"]');
+    //const originalBtnText = submitBtn.innerHTML;
+    //submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    //submitBtn.disabled = true;
+
+    // Get form data
+    //const formData = {
+        //name: contactForm.querySelector('#name').value,
+        //email: contactForm.querySelector('#email').value,
+        //message: contactForm.querySelector('#message').value
+    //};
+
+    // Send email using EmailJS
+    //emailjs.send('service_ftulwh8', 'template_ikc0bzm', formData)
+        //.then(() => {
+            // Show success message
+            //successMessage.style.display = 'block';
+           // contactForm.reset();
+
+            // Hide success message after 5 seconds
+            //setTimeout(() => {
+                //successMessage.style.display = 'none';
+            //}, 5000);
+        //})
+        //.catch((error) => {
+            //console.error('Email error:', error);
+            //alert('There was an error sending your //message. Please try again.');
+        //})
+        //.finally(() => {
+            // Reset button state
+            //submitBtn.innerHTML = originalBtnText;
+            //submitBtn.disabled = false;
+        //});
+//});
 
 // Parallax Effect for Hero Section
 document.addEventListener('mousemove', (e) => {
