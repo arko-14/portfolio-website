@@ -1,7 +1,7 @@
 // Initialize EmailJS
-(function() {
-    emailjs.init("KRD077ywvHDMNKMi3"); // Replace with your EmailJS public key
-})();
+//(function() {
+    //emailjs.init("KRD077ywvHDMNKMi3"); // Replace with your EmailJS public key
+//})();
 
 // Custom Cursor
 const cursor = document.querySelector('.cursor');
