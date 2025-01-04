@@ -167,39 +167,46 @@ contactForm.addEventListener('submit', (e) => {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    // Get form data and prepare for Google Forms
-    const formData = new FormData();
-    formData.append('entry.2005620554', contactForm.querySelector('#name').value);
-    formData.append('entry.1045781291', contactForm.querySelector('#email').value);
-    formData.append('entry.839337160', contactForm.querySelector('#message').value);
+    // Get form data
+    const name = contactForm.querySelector('#name').value;
+    const email = contactForm.querySelector('#email').value;
+    const message = contactForm.querySelector('#message').value;
 
-    // Send to Google Forms
-    fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLScudGAf4oKXs2D4HZvHzw0-xdSzpXTFOBIyXjdQ10EZPCQwgg/formResponse', {
+    // Create URL with parameters (alternative approach)
+    const formUrl = 'https://forms.gle/tZ7bamVf35oUvsDa8';
+    
+    // Using URLSearchParams for better encoding
+    const params = new URLSearchParams();
+    params.append('entry.2005620554', name);
+    params.append('entry.1045781291', email);
+    params.append('entry.839337160', message);
+
+    // Send using fetch with proper headers
+    fetch(formUrl, {
         method: 'POST',
         mode: 'no-cors',
-        body: formData
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString()
     })
     .then(() => {
-        // Show success message
+        console.log('Form submitted successfully'); // Debug log
         if (successMessage) {
             successMessage.style.display = 'block';
-            // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 5000);
         } else {
             alert('Thank you for your message!');
         }
-        
-        // Clear the form
         contactForm.reset();
     })
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Submission error:', error); // Debug log
         alert('There was an error sending your message. Please try again.');
     })
     .finally(() => {
-        // Reset button state
         submitBtn.innerHTML = originalBtnText;
         submitBtn.disabled = false;
     });
