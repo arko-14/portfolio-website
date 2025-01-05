@@ -33,10 +33,10 @@ This portfolio website serves as a personal platform to highlight my expertise, 
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Frameworks/Libraries**: Bootstrap, GSAP (for animations)
+- **Backend**: Flask
+- **Frameworks/Libraries**: Gunicorn
 - **Version Control**: Git
-- **Hosting**: Deployed on [GitHub Pages](https://github.com/arko-14/portfolio-website)
-
+- **Hosting**: Deployed on Render
 ## Installation
 
 To run this project locally, follow these steps:
